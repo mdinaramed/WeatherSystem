@@ -16,7 +16,6 @@ public class WeatherData {
         this.windSpeed = b.windSpeed;
         validate();
     }
-
     private void validate() {
         if (Double.isNaN(temperatureC) || Double.isNaN(humidity) ||
                 Double.isNaN(pressure) || Double.isNaN(windSpeed)) {
@@ -29,7 +28,6 @@ public class WeatherData {
             throw new IllegalArgumentException("pressure must be between 300 and 1100");
         }
     }
-
     public double temperatureF() {
         return temperatureC * 9 / 5 + 32;
     }
@@ -64,7 +62,6 @@ public class WeatherData {
                 - 0.00000199 * tF * tF * rh * rh;
         return (hiF - 32.0) * 5.0/9.0;
     }
-
     private static double windChillC(double tC, double vKmh) {
         return 13.12 + 0.6215 * tC - 11.37 * Math.pow(vKmh, 0.16)
                 + 0.3965 * tC * Math.pow(vKmh, 0.16);
@@ -81,35 +78,29 @@ public class WeatherData {
                 '}';
     }
 
-    public static class Builder {
-        private Instant timestamp;
+    public static class Builder { private Instant timestamp;
         private double temperatureC, humidity, pressure, windSpeed;
 
         public Builder timestamp(Instant timestamp) {
             this.timestamp = timestamp;
             return this;
         }
-
         public Builder temperatureC(double temperatureC) {
             this.temperatureC = temperatureC;
             return this;
         }
-
         public Builder humidity(double humidity) {
             this.humidity = humidity;
             return this;
         }
-
         public Builder pressure(double pressure) {
             this.pressure = pressure;
             return this;
         }
-
         public Builder windSpeed(double windSpeed) {
             this.windSpeed = windSpeed;
             return this;
         }
-
         public WeatherData build() {
             return new WeatherData(this);
         }

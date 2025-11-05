@@ -1,18 +1,17 @@
 package weather.strategy;
 import weather.main.WeatherData;
-
 import java.util.*;
 
-public class ManualEntryStrategy implements DataUpdateStrategy {
+public class ManualStrategy implements DataUpdateStrategy {
     private final Deque<WeatherData> queue = new ArrayDeque<>();
+
     @Override
     public String getName() {
         return "ManualEntry";
     }
-    public void submit(WeatherData d) {
-        queue.addLast(d);
+    public void submit(WeatherData data) {
+        queue.addLast(data);
     }
-
     @Override
     public List<WeatherData> fetch() {
         List<WeatherData> out = new ArrayList<>();

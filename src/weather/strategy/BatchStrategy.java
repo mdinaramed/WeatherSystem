@@ -1,21 +1,19 @@
 package weather.strategy;
 import weather.main.WeatherData;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ScheduleBatchStrategy implements DataUpdateStrategy {
+public class BatchStrategy implements DataUpdateStrategy {
     private final int batch;
-    public ScheduleBatchStrategy(int batch) {
+    public BatchStrategy(int batch) {
         this.batch = Math.max(1, batch);
     }
     @Override
     public String getName() {
         return "Batch(" + batch + ")";
     }
-
     @Override
     public List<WeatherData> fetch() {
         List <WeatherData> list = new ArrayList<>(batch);
